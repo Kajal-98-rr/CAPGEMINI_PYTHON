@@ -1,0 +1,76 @@
+Python Decorators
+\
+DESCRIPTION
+Environment Specifications & Instructions
+Allowed Languages
+Python2
+Python3
+Build Expectation
+Task
+Implement a Python decorator that should take whatever the decorated function returns, and writes it to a file in a new line.
+
+For the sake of this problem, let us assume that the decorated functions always return a string.
+
+Constraints
+The decorator should be named log_message and should write to the file /tmp/decorator_logs.txt.
+
+Example usage:
+
+@log_message
+def a_function_that_returns_a_string():
+    return "A string"
+
+@log_message
+def a_function_that_returns_a_string_with_newline(s):
+    return "{}\n".format(s)
+
+@log_message
+def a_function_that_returns_another_string(string=""):
+    return "Another string"
+
+
+On running in python shell,
+
+>>> a_function_that_returns_a_string()
+>>> a_function_that_returns_a_string_with_newline("Newline String")
+>>> a_function_that_returns_another_string(string="Another String")
+Should write the string to the file.
+
+$ cat /tmp/decorator_logs.txt
+A string
+Newline string
+
+Another string
+
+
+
+Solution:
+"""
+Please define the @log_message decorator here.
+"""
+import logging
+log_message="/tmp/decorator_logs.txt"
+LOGFORMAT="%(message)s"
+logging.basicConfig(filename=log_message, filemode='w',level=logging.INFO)
+logger = logging.getLogger()
+
+def log_message(func):
+    def wrapper(*args, **kwargs):
+        res = func(*args, **kwargs)
+        logger.info(res)
+        return wrapper
+        
+@log_message
+def a_function_that_returns_a_string():
+    return "A string"
+@log_message
+def a_function_that_returns_a_string_with_newline(s):
+    return "{}\n".format(s)
+@log_message
+def a_function_that_returns_another_string(string=""):
+    return "Another string"
+    
+a_function_that_returns_a_string()
+a_function_that_returns_a_string_with_newline("Newline String")
+a_function_that_returns_another_string(string="Another String")
+
