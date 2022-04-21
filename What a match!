@@ -1,0 +1,70 @@
+What a match!
+bookmark_border
+subject Coding
+DESCRIPTION
+Complete the classes using the Specifications given below. Consider default visibility of classes, data fields, and methods unless mentioned otherwise.
+
+Specifications
+
+class definitions:﻿
+ class Match:
+  data members:
+   player1 = []
+﻿﻿   player2 = []
+   ﻿
+  ﻿method definitions:
+   ﻿findWinner():return : String
+    visibility: public       
+﻿
+ class WicketOutException(Exception):
+   ﻿method definitions:
+    def __init__(self, message):
+     visibility: public  ﻿
+
+ class OutException(Exception):
+   ﻿method definitions:
+    def __init__(self, message):
+     visibility: public  ﻿
+Task
+Class Match
+
+-define the data members as per the given specifications.
+
+-define the constructor with public visibility.
+
+Implement the below methods for this class:
+
+-String findWinner():
+
+Write a code that counts the number of special triples in the list player1 and player2.
+The special triples denotes where list[i], list[i+1], and list[i+2] where 0<=i<=length(list), all three of them are even.
+If special triples in player1 are greater than special triples in player2 then return "Player1".
+If special triples in player1 are less than special triples in player2 then raise OutException with a message "Player 1 out".
+If special triples in player2 are equal to special triples in player2 then raise WicketOutException with a message "ALL OUT".
+Class WicketOutException
+
+- Define WicketOutException class derived from the Exception class
+
+- Define class parameter message that references the send parameter message in the constructor.
+
+Class OutException
+
+- Define OutException class derived from the Exception class
+
+- Define class parameter message that references to the send parameter message in the constructor.
+
+Sample Input
+
+p1 = [2,2,4,6]
+p2 = [2,2,6,8]
+d = Match(p1, p2)
+try :
+    d.findWinner()
+except Exception as e:
+    print(e.message)
+Sample Output
+
+ALL OUT
+NOTE:
+You can make suitable function calls and use the RUN CODE button to check your main() method output.
+
